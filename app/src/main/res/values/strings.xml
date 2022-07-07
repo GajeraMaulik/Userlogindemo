@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Userlogindemo</string>
+    <string name="signin_label">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</string>
+    <string name="signin_welcome_back">Welcome back</string>
+    <string name="username_hint">Username/Email</string>
+    <string name="sign_up">CREATE AN ACCOUNT</string>
+    <string name="signin_text">Don’t have an account?</string>
+    <string name="forgot_password">
+<u>Forgot Password?</u>
+</string>
+    <string name="signup_titel">Grocery App</string>
+    <string name="signUp_create_your_account">Create your account</string>
+    <string name="signup_lorem_ipsum_dolor_sit_amet">Lorem ipsum dolor sit amet</string>
+    <string name="signup_password_hint">Password</string>
+    <string name="signup_email">Email</string>
+    <string name="signup_register">REGISTER</string>
+    <string name="signup_label">Already have account?</string>
+    <string name="signup_checkbox">By tapping “Sign Up” you accept our<br/><b><a href="www.google.com"> terms </a></b>and<b><a href="">condition</a></b>
+</string>
+    <string name="title_choose_image_provider">Choose</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="title_gallery">Gallery</string>
+    <string name="title_camera">Camera</string>
+    <string name="image_picker_provider_authority_suffix" translatable="false">.imagepicker.provider</string>
+    <string name="permission_gallery_denied">
+<![CDATA[ Storage permission is needed to pick gallery image. Please allow storage permission from Settings > Permissions. ]]>
+</string>
+    <string name="permission_camera_extended_denied">
+<![CDATA[ Camera and Storage permissions are needed to take a picture. Please allow both the requested permissions from Settings > Permissions. ]]>
+</string>
+    <string name="permission_camera_denied">
+<![CDATA[ Storage permission is needed to take a picture. Please allow storage permission from Settings > Permissions. ]]>
+</string>
+    <string name="error_failed_to_create_camera_image_file">Failed to create Camera image file</string>
+    <string name="error_failed_pick_gallery_image">Failed to pick Gallery image</string>
+    <string name="error_failed_to_crop_image">Failed to crop image</string>
+    <string name="error_failed_to_compress_image">Failed to compress image</string>
+    <string name="error_task_cancelled">Task Cancelled</string>
+    <string name="error_camera_app_not_found">Camera app not found</string>
+    <string name="msg_loading">Loading...</string>
+    <string name="uploadImages">Set your image</string>
+
+</resources>
