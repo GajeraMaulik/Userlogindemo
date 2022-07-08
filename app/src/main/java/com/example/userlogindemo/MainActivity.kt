@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.example.userlogindemo.GetUser.UsersActivity
 import com.example.userlogindemo.Profile.FileUriUtils
 import com.example.userlogindemo.Profile.ImagePicker
 import com.example.userlogindemo.Profile.ImageProvider
@@ -136,6 +137,10 @@ class MainActivity : AppCompatActivity() {
         }
         getAllPost.setOnClickListener {
             val intent = Intent(this, PostActivity::class.java)
+            startActivity(intent)
+        }
+        getUsers.setOnClickListener {
+            val intent = Intent(this, UsersActivity::class.java)
             startActivity(intent)
         }
 

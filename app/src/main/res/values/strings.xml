@@ -15,7 +15,7 @@
     <string name="signup_email">Email</string>
     <string name="signup_register">REGISTER</string>
     <string name="signup_label">Already have account?</string>
-    <string name="signup_checkbox">By tapping “Sign Up” you accept our<br/><b><a href="www.google.com"> terms </a></b>and<b><a href="">condition</a></b>
+    <string name="signup_checkbox">By tapping “Sign Up” you accept our<br /><b><a href="www.google.com"> terms </a></b>and<b><a href="">condition</a></b>
 </string>
     <string name="title_choose_image_provider">Choose</string>
     <string name="action_cancel">Cancel</string>

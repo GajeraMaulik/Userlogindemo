@@ -127,4 +127,24 @@ object Client {
         return  apiServices
     }
 
+    fun getUsers(): APIServices {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        val client: OkHttpClient =
+            OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .connectTimeout(2, TimeUnit.MINUTES)
+                .callTimeout(15, TimeUnit.SECONDS)
+                .readTimeout(15, TimeUnit.SECONDS)
+                .writeTimeout(15, TimeUnit.SECONDS)
+                .build()
+        val apiServices= Retrofit.Builder()
+            .baseUrl("http://15.184.130.128/api/")
+
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build().create(APIServices::class.java)
+        return  apiServices
+    }
+
 }

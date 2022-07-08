@@ -42,4 +42,15 @@
         android:text="getAllPost"
         tools:ignore="MissingConstraints,OnClick"/>
 
+    <Button
+        android:id="@+id/getUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/getAllPost"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="10dp"
+        android:layout_alignEnd="@id/userName"
+        android:text="getUsers"
+        tools:ignore="MissingConstraints,OnClick"/>
+
 </RelativeLayout>

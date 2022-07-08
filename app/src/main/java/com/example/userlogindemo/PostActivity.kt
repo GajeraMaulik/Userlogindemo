@@ -51,7 +51,7 @@ class PostActivity : AppCompatActivity() {
 
         val getResponse = Client.addPost()
         d("allpost", " --getresponse -->$getResponse")
-        val call = getResponse.getAllPost("1,2,3,4,5,6,7,8,9,10,11,12,13,14,19,20", "0", "10")
+        val call = getResponse.getAllPost("1,2,3,4,5,6,7,8,9,10,11,12,13,14,19,20", "0", "100")
         d("allpost", " --call -->$call")
         call.enqueue(object : Callback<PostResponse> {
             override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
@@ -86,17 +86,7 @@ class PostActivity : AppCompatActivity() {
                                  rvPostList.adapter = postAdapter
 
 
-
-
                         d("allpost", " --postLists -->$dataclass")
-
-
-
-                     //    d("allpost", " --postLists -->$postLists")
-
-                         //   val post =response.body()?.setData()
-
-
 
                         d("allpost", " --afeter add -->$postList")
 
