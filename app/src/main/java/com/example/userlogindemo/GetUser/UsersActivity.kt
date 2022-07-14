@@ -11,11 +11,17 @@ import com.example.userlogindemo.GetPost.PostResponse
 import com.example.userlogindemo.R
 import com.example.userlogindemo.Retrofit.Client
 import kotlinx.android.synthetic.main.activity_users.*
+import kotlinx.android.synthetic.main.view_users.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.math.log
 
 class UsersActivity : AppCompatActivity() {
+
+    var  categorynames :ArrayList<String> = ArrayList()
     private lateinit var pDialog: ProgressDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,14 +54,56 @@ class UsersActivity : AppCompatActivity() {
 
                 val postclassd: UsersResponse = response.body()!!
                 val dataclass: ArrayList<UserCategory> = postclassd.data.user_category as ArrayList<UserCategory>;
+       //         val categorydata :ArrayList<UserCategory> = postclassd.data as
 
 
                 if(response.body()?.success!!){
 
-                    firstname.text =  response.body()?.data!!.first_name + {response.body()?.data!!.user_category}
+                    for (i in 0..dataclass.size-1){
+
+                        var usercat =response.body()?.data?.user_category!!.get(i)
+
+
+                        Log.d("getusers", " --usercat-->${usercat}")
+                        firstName.text =  response.body()?.data!!.first_name
+                        lastName.text = response.body()?.data!!.last_name
+                        userName.text = response.body()?.data!!.username
+                        emailId.text = response.body()?.data!!.email
+                        loginType.text = response.body()?.data!!.login_type
+                        userStatus.text = response.body()?.data!!.status
+
+
+                    //    for (i in 0..usercat.name){
+
+                            Log.d("getusers", " --iiiiiiii-->$i")
+                        //    userCategory.text =
+
+                   //     }
+                        val userCategoryName = usercat.name
+                        categorynames.addAll(listOf(userCategoryName))
+                        Log.d("getusers", " --categorynames-->${categorynames}")
+
+
+                        userCategory.text = categorynames.toString()
+
+
+
+
+
+                    }
+
+
                 }else {
-                    firstname.text = "Incorrect detail"
-                  //  plot.text = response.getString("Plot")
+                    val incorrectValue = "Incorrect detail"
+                    firstName.text = incorrectValue
+                    lastName.text = incorrectValue
+                    userName.text = incorrectValue
+                    emailId.text = incorrectValue
+                    loginType.text = incorrectValue
+                    userStatus.text = incorrectValue
+                    userCategory.text = incorrectValue
+
+                    //  plot.text = response.getString("Plot")
                     //name.text = response.getString("Title")+"\n\n"+"Writer: "+response.getString("Writer")
                 }
 

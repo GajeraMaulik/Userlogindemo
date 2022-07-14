@@ -1,6 +1,8 @@
 package com.example.userlogindemo.Retrofit
 
 import android.text.Editable
+import com.example.userlogindemo.DeletePost.PostCategory
+import com.example.userlogindemo.DeletePost.PostDeleteResponse
 import com.example.userlogindemo.GetPost.Data
 import com.example.userlogindemo.GetPost.PostResponse
 import com.example.userlogindemo.GetUser.UsersResponse
@@ -8,6 +10,7 @@ import com.example.userlogindemo.Model.Login.Register.Login.Login
 import com.example.userlogindemo.Model.Login.Register.Login.LoginRequestBody
 import com.example.userlogindemo.Model.Login.Register.RegisterRequestBody
 import com.example.userlogindemo.Model.Login.Register.Registration
+import com.example.userlogindemo.Report.ReportResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -151,5 +154,27 @@ interface APIServices /*: Call<UploadResponse>*/ {
     )
     fun getUsers(@Query("id") id: Editable):Call<UsersResponse>
 
+    @Multipart
+    @POST("post-delete")
+    @Headers(
+        "accept:application/json",
+        "deviceid:1",
+        "devicename:Samsung",
+        "osname:PI",
+        "osversion:9",
+        "platform:android",
+        "appversion:0.0",
+        "lastsyncdate:21/01/2022",
+        "appbuildversion:0.0",
+        "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODVjZTUxZTc4MGYzNmQwZDM5Mjk1MTZkYmQ5ZGUxOTI2OTkwNzliMjA5NmYzOTk1ZWQ1Y2E3YzUzMzdiYzQ1YmY4ZWExZmY1ODFhODFkZjAiLCJpYXQiOjE2NTcyNjI5MzQsIm5iZiI6MTY1NzI2MjkzNCwiZXhwIjoxNjg4Nzk4OTM0LCJzdWIiOiIyOSIsInNjb3BlcyI6W119.hI0Se1qNWDQHZlWW-3BO-iArZsz8zdYkykzchIHTjG_UwesbfHALiER0plTy4VFO4SpU0D5piAOYfuu0mELrQfwzGCpuxLvFMGd5HVgj49Cqnm7wSKUJOhcA-XPiit-kWR_nKFPQM2h51aavb4np_8aRt2uD7NLj0c3EceIkrjOiWyqyGkJ3KwIjRBFo76altPZLrehndSDEfXNl4ASgcWpnn0r-HTldN7OE98nvMKIYW4BnuVP4wh_l8bKWX0lAsBn284luMh_ChQ81SEuQ_1MOdk-9f1fpFE2XutR_hO-ixGNr6LQrubkhFzY8_d7gTHFCm0KmdVITjuihgqx7bmfxMdcEnGEMXT06ij2JhlzxOyJE0XgwpJVG8a9vWDWgWMxefAHUACnayIjvP0sBquR50odsdUJBpcdUYxJZ77pwTLAul-DJN9v6SToyvzWHVn9zt0pCvETt1nVMSvFzN4lMl-TkjqDINU6Wr6rYuIAqy8esRK3l-pJphgRqsPX4IAyxF2Gfgmct7Ph-S8nKIEL8fVxRE6qGKvFiqXGY2XC1EjwOIXIl35DjJKfqKZZTJ8wrCCkeiMg-tdmNvfIrY6zfKg24pnxhTPsNNu0ywR9V8tzCd7hphJ-8K0fp7skOkKTA4SQAh7zr1xuxnidX4b_QvJe56T9QaS-Ab1zdBEg",
+    )
+    fun postDelele(@Part post_id:MultipartBody.Part):Call<PostDeleteResponse>
+
+
+    @GET("report-tag")
+    @Headers(
+        "accept:application/json"
+    )
+    fun getReporttag():Call<ReportResponse>
 
 }

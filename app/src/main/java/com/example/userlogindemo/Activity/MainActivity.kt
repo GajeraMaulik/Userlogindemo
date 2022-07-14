@@ -1,4 +1,4 @@
-package com.example.userlogindemo
+package com.example.userlogindemo.Activity
 
 import android.app.Activity
 import android.app.ProgressDialog
@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.util.Log.d
 import android.widget.ImageView
 import android.widget.Toast
@@ -19,8 +20,14 @@ import com.example.userlogindemo.GetUser.UsersActivity
 import com.example.userlogindemo.Profile.FileUriUtils
 import com.example.userlogindemo.Profile.ImagePicker
 import com.example.userlogindemo.Profile.ImageProvider
+import com.example.userlogindemo.R
+import com.example.userlogindemo.Report.ReportResponse
 import com.example.userlogindemo.Retrofit.APIServices
 import com.example.userlogindemo.Retrofit.Client
+import com.example.userlogindemo.SharePref
+import com.example.userlogindemo.SharedPrefManager
+import com.example.userlogindemo.databinding.ActivityMainBinding
+import com.example.userlogindemo.databinding.ActivityRegisterBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -60,6 +67,8 @@ class MainActivity : AppCompatActivity() {
 
     private var mProfileUri: Uri? = null
 
+    lateinit var binding : ActivityMainBinding
+
     private val profileLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == RESULT_OK) {
                 val uri = it.data?.data!!
@@ -77,7 +86,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         sharedPrefManager = SharedPrefManager(applicationContext)
         activity = Activity()
@@ -143,6 +154,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, UsersActivity::class.java)
             startActivity(intent)
         }
+
 
     }
 

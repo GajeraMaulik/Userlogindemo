@@ -1,4 +1,4 @@
-package com.example.userlogindemo
+package com.example.userlogindemo.Activity
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -14,12 +14,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.userlogindemo.Database.UsersRegisterRepo
-import com.example.userlogindemo.Model.Login.Register.Login.Data
 import com.example.userlogindemo.Model.Login.Register.Login.Login
 import com.example.userlogindemo.Model.Login.Register.Login.LoginRequestBody
-import com.example.userlogindemo.Model.Login.Register.Login.UserCategory
+import com.example.userlogindemo.R
 import com.example.userlogindemo.Retrofit.APIServices
 import com.example.userlogindemo.Retrofit.Client
+import com.example.userlogindemo.SharePref
 import com.example.userlogindemo.Viewmodel.RegisterViewModel
 import com.example.userlogindemo.databinding.ActivityLoginBinding
 import kotlinx.android.synthetic.main.activity_login.*
@@ -155,15 +155,19 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("dvdsfgbfdb", "after message ${response.message()}")
                     Log.d("dvdsfgbfdb", "api  if true")
 
-                    SharePref.save(this@LoginActivity,"username",username)
-                    SharePref.save(this@LoginActivity,"usertoken","${response?.body()!!.data.access_token}")
+                    SharePref.save(this@LoginActivity, "username", username)
+                    SharePref.save(
+                        this@LoginActivity,
+                        "usertoken",
+                        "${response?.body()!!.data.access_token}"
+                    )
 
                     Log.d("dvdsfgbfdb", "token : ${response?.body()!!.data.access_token}")
                     //SharedPrefManager.getInstance(applicationContext).saveUser(response.body()!!.login)
 
                     Toast.makeText(this@LoginActivity, "Login success!", Toast.LENGTH_SHORT).show()
 
-                    val intent =Intent(this@LoginActivity,MainActivity::class.java)
+                    val intent =Intent(this@LoginActivity, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
 
@@ -191,7 +195,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        if(SharePref.getBooleanValue(this,"isLogin")){
+        if(SharePref.getBooleanValue(this, "isLogin")){
             val intent = Intent(applicationContext, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 

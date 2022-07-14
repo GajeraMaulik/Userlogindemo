@@ -1,4 +1,4 @@
-package com.example.userlogindemo
+package com.example.userlogindemo.Activity
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -9,7 +9,6 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.util.Log.d
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
@@ -21,16 +20,17 @@ import com.example.userlogindemo.Model.Login.Register.RegisterRequestBody
 import com.example.userlogindemo.Model.Login.Register.Registration
 import com.example.userlogindemo.Profile.ImagePicker
 import com.example.userlogindemo.Profile.setLocalImage
+import com.example.userlogindemo.R
 import com.example.userlogindemo.Retrofit.APIServices
 import com.example.userlogindemo.Retrofit.Client
+import com.example.userlogindemo.SharePref
 import com.example.userlogindemo.Viewmodel.RegisterViewModel
+import com.example.userlogindemo.databinding.ActivityRegisterBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_register.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.File
-import java.text.SimpleDateFormat
 import java.util.*
 
 @AndroidEntryPoint
@@ -43,6 +43,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var email: String
     private lateinit var password : String
     private lateinit var username: String
+    lateinit var binding : ActivityRegisterBinding
 
 
     private var mProfileUri: Uri? =null
@@ -53,7 +54,7 @@ class RegisterActivity : AppCompatActivity() {
             mProfileUri = uri
             Log.d("TAG","Profile:$uri")
             imgProfile.setLocalImage(uri, true)
-            SharePref.save(this,"profile","$uri")
+            SharePref.save(this, "profile", "$uri")
             //uploadImage(uri)
 
         } else parseError(it)
@@ -61,6 +62,10 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         setContentView(R.layout.activity_register)
 
         val actionBar = supportActionBar
@@ -179,7 +184,7 @@ class RegisterActivity : AppCompatActivity() {
                            .show()
                      //  val data = response.body()?.register?.getRegister()
 
-                       startActivity(Intent(this@RegisterActivity,LoginActivity::class.java))
+                       startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
 
                        viewModel.insert(registeruser)
 

@@ -1,4 +1,4 @@
-package com.example.userlogindemo
+package com.example.userlogindemo.Activity
 
 import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -9,22 +9,31 @@ import android.widget.Toast
 import com.example.userlogindemo.Adapter.PostAdapter
 import com.example.userlogindemo.GetPost.Data
 import com.example.userlogindemo.GetPost.PostResponse
+import com.example.userlogindemo.R
 import com.example.userlogindemo.Retrofit.Client
+import com.example.userlogindemo.databinding.ActivityMainBinding
+import com.example.userlogindemo.databinding.ActivityPostBinding
 import kotlinx.android.synthetic.main.activity_post.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PostActivity : AppCompatActivity() {
+class PostActivity : AppCompatActivity(){
 
     private lateinit var pDialog: ProgressDialog
     var postList: ArrayList<Data> = ArrayList()
     lateinit var postAdapter: PostAdapter
     lateinit var postResponse: PostResponse
     lateinit var data:Data
+    lateinit var binding : ActivityPostBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        binding = ActivityPostBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
         setContentView(R.layout.activity_post)
 
 
@@ -36,7 +45,7 @@ class PostActivity : AppCompatActivity() {
 
     }
 
-    fun getPosts() {
+   fun getPosts() {
 
         showpDialog()
 
@@ -92,7 +101,7 @@ class PostActivity : AppCompatActivity() {
 
 
                         Toast.makeText(this@PostActivity, """success ${response.code()}""", Toast.LENGTH_SHORT).show()
-                        Toast.makeText(this@PostActivity, """success body  ${response.body().toString()}""", Toast.LENGTH_SHORT).show()
+                       // Toast.makeText(this@PostActivity, """success body  ${response.body().toString()}""", Toast.LENGTH_SHORT).show()
                         d("allpost", " --true body -->${response.body()?.data.toString()}")
                         d("allpost", " --true message -->${response.message()}")
                         d("allpost", " --true code-->${response.code()}")
@@ -124,6 +133,10 @@ class PostActivity : AppCompatActivity() {
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+
+    }
 
     protected fun initDialog() {
 
@@ -145,6 +158,4 @@ class PostActivity : AppCompatActivity() {
 
 }
 
-private fun <E> ArrayList<E>.addAll(elements: Array<String>) {
 
-}

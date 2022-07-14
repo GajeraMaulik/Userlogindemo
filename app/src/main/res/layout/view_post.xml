@@ -6,23 +6,101 @@
     android:layout_height="wrap_content">
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/postView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_300sdp"
-        tools:ignore="MissingConstraints" >
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/postReport"
+            style="@style/ImageButtonStyle"
+            android:layout_alignParentEnd="true"
+            android:onClick="showImageInfo"
+            app:srcCompat="@drawable/outline_info_24"
+            tools:ignore="OnClick" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/postDeleteView"
+            style="@style/ImageButtonStyle"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="46dp"
+            android:background="@android:color/transparent"
+            android:onClick="deleteview"
+            android:src="@drawable/ic_baseline_delete_24"
+            tools:ignore="OnClick" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtGallery"
+            style="@style/TitleTextStyle"
+            android:layout_toStartOf="@id/postDeleteView"
+            android:text="Username" />
 
         <ImageView
             android:id="@+id/postImage"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_300sdp"
-            android:padding="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_below="@id/txtGallery"
             android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="125dp"
             tools:srcCompat="@tools:sample/avatars" />
 
-    </androidx.cardview.widget.CardView>
+<!--
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/postImage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_below="@id/txtGallery"
+            android:background="@color/grey_50"
+            app:src="@tools:sample/avatars"
+            android:onClick="showImage"
+            android:scaleType="centerCrop" />-->
+
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/noDataFound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:src="@drawable/nodata"
+        tools:ignore="MissingConstraints" />
+
+
+
+    <!-- <androidx.cardview.widget.CardView
+         android:id="@+id/postView"
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/_300sdp"
+         android:padding="@dimen/_10sdp"
+         tools:ignore="MissingConstraints" >
+         <androidx.appcompat.widget.AppCompatImageView
+             android:id="@+id/imgGalleryInfo"
+             style="@style/ImageButtonStyle"
+             android:onClick="showImageInfo"
+             app:srcCompat="@drawable/outline_info_24"
+             tools:ignore="OnClick" />
+
+         <androidx.appcompat.widget.AppCompatImageButton
+             android:id="@+id/gDeleteView"
+             style="@style/ImageButtonStyle"
+             android:layout_alignParentEnd="true"
+             android:layout_marginEnd="46dp"
+             android:background="@android:color/transparent"
+             android:onClick="deleteview"
+             android:src="@drawable/ic_baseline_delete_24"
+             tools:ignore="OnClick" />
+
+         <ImageView
+             android:id="@+id/postImage"
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/_200sdp"
+             android:padding="@dimen/_20sdp"
+             android:layout_marginTop="@dimen/_10sdp"
+             android:scaleType="centerCrop"
+             app:layout_constraintTop_toTopOf="parent"
+             tools:ignore="MissingConstraints"
+             tools:layout_editor_absoluteX="125dp"
+             tools:srcCompat="@tools:sample/avatars" />
+
+     </androidx.cardview.widget.CardView>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

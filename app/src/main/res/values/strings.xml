@@ -39,5 +39,7 @@
     <string name="error_camera_app_not_found">Camera app not found</string>
     <string name="msg_loading">Loading...</string>
     <string name="uploadImages">Set your image</string>
+    <string name="dialogTitle">Delete Item</string>
+    <string name="dialogMessage">Are You Sure?</string>
 
 </resources>

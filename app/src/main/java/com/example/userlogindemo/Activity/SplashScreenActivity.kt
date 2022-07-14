@@ -1,18 +1,26 @@
-package com.example.userlogindemo
+package com.example.userlogindemo.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.WindowManager
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.userlogindemo.R
+import com.example.userlogindemo.SharePref
+import com.example.userlogindemo.databinding.ActivityRegisterBinding
+import com.example.userlogindemo.databinding.ActivityReportBinding
+import com.example.userlogindemo.databinding.ActivitySplashScreenBinding
 
 
 class SplashScreenActivity : AppCompatActivity() {
+    lateinit var binding : ActivitySplashScreenBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen)
+
+
+        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
         // This is used to hide the status bar and make
@@ -54,7 +62,7 @@ class SplashScreenActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         Handler().postDelayed({
-        if(SharePref.getBooleanValue(this,"isLogin")){
+        if(SharePref.getBooleanValue(this, "isLogin")){
             val intent = Intent(applicationContext, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
